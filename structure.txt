@@ -1,0 +1,11 @@
+abc                 /* alphabet on first line as a string                           */
+4                   /* number of states                                             */
+state_1 0
+state_2 0
+state_3 0
+state_4 1
+state_1             /* start state                                                  */
+state_1 a state_2   /* transitions for each state and letter in alphabet            */
+state_1 b state_1   /* there should be n * k transitions, with n = number of states */
+state_1 c state_1   /* and k = number of letters in alphabet                        */
+...
