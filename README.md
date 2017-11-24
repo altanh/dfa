@@ -2,7 +2,7 @@
 
 ## DFA file structure
 ```
-abcd...        // alphabet as a string
+01             // alphabet as a string
 2              // number of states
 q_0 0          // state label and output (0 for false, 1 for true)
 q_1 1
