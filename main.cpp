@@ -4,7 +4,7 @@ int main(int argc, char **argv) {
     DFA a;
     DFA b;
 
-    if(!(a.fromFile("two_ones.txt") && b.fromFile("most_two_zeros.txt"))) {
+    if(!(a.fromFile("dfas/two_ones.txt") && b.fromFile("dfas/most_two_zeros.txt"))) {
         std::cerr << "wtf" << std::endl;
 
         return -1;
@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 
     both.print();
 
-    //both.saveToFile("both.txt");
+    both.saveToFile("dfas/both.txt");
 
     DFA min = both.minimize(true);
 
@@ -29,9 +29,10 @@ int main(int argc, char **argv) {
         "0", "", "1", "101", "11"
     };
 
+    min.saveToFile("dfas/min.txt");
+
     for(auto &s : tests) {
-        std::cout << s << ": " << min.run(s) << std::endl;
-        std::cout << s << ": " << both.run(s) << std::endl;
+        std::cout << s << ": " << (min.run(s) ? "true" : "false")  << std::endl;
     }
 
     return 0;
