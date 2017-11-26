@@ -27,7 +27,6 @@ struct State {
 struct DFA {
     std::vector<State> states;
     std::vector<char> alphabet;
-    //std::map<std::tuple<std::string, char>, State> transitions;
     std::vector<State*> transitions;
     State *start;
 
@@ -38,9 +37,7 @@ struct DFA {
     void saveToFile(std::string filename) const;
 
     State &delta(const State &s, char c);
-
-    // read-only
-    const State &delta(const State &s, char c) const;
+    const State &delta(const State &s, char c) const; // read-only
 
     bool run(std::string s) const;
 
@@ -55,7 +52,7 @@ struct DFA {
     static DFA fromProduct(const DFA &a, const DFA &b, bool isUnion);
 
 private:
-    
+
     std::set<State> _getReachable() const;
     std::vector<std::set<State>> _getPartitioning(const std::set<State> &_states) const;
 };

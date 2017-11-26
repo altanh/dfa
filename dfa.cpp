@@ -335,12 +335,9 @@ DFA DFA::complement() const {
 }
 
 bool DFA::sublanguageOf(const DFA &other) const {
-    DFA thisMin = this->minimize(true);
-    DFA compMin = other.minimize(true).complement();
+    DFA intersection = fromProduct(*this, other.complement(), false);
 
-    DFA intersection = fromProduct(thisMin, compMin, false).minimize(true);
-
-    for(auto &s : intersection.states)
+    for(auto &s : intersection._getReachable())
         if(s.output)
             return false;
 

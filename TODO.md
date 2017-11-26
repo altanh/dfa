@@ -6,3 +6,10 @@ Currently, the state transition function for each DFA is stored as a map from `(
 This would remove the map inefficiencies and also some unnecessary state-label conversions/lookups. 
 
 *UPDATE*: I have now switched to the above method for storing state transitions. Internally, the transitions are stored in a vector of `State*`s (I realized that references must be initialized upon declaration, not to mention that they need to be wrapped in a class to even be stored in STL containers). This was a bit tricky to deal with, since every time a DFA is copy-constructed I need to recalculate the pointer addresses. In the end, I think this approach is probably faster, but I'm not sure if the added pointer complexity will hurt in the long term.
+
+## Expand to NFAs
+Not quite sure how to begin this. The nondeterminism means I'd have to keep track of multiple paths simultaneously, and I don't know what the best way of approaching this is. For transitions, I wouldn't be able to use the same mapping as before (this might not be entire true - I could simply have all nonexistant transitions go to a garbage state). 
+
+
+## Regex -> NFA -> DFA
+Shouldn't be too bad after implementing NFAs.
