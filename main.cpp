@@ -23,17 +23,20 @@ int main(int argc, char **argv) {
 
     min.print();
 
+    min.saveToFile("dfas/min.txt");
+
     std::string tests[] = {
         "1101", "1111100111", "010100",
         "1010", "0111111110", "1000001",
         "0", "", "1", "101", "11"
     };
 
-    min.saveToFile("dfas/min.txt");
-
     for(auto &s : tests) {
-        std::cout << s << ": " << (min.run(s) ? "true" : "false")  << std::endl;
+        std::cout << "both(" << s << "): " << (both.run(s) ? "true" : "false")  << std::endl;
+        std::cout << "min(" << s << "): " << (min.run(s) ? "true" : "false")  << std::endl;
     }
+
+    std::cout << "both = min? " << (both.equivalentTo(min) ? "true" : "false") << std::endl;
 
     return 0;
 }
